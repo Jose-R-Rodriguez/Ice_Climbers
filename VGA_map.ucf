@@ -1,0 +1,11 @@
+NET "clk50mhz" LOC = P56;
+NET "reset" LOC = P133;
+
+//RGB
+NET "rgb<0>" LOC = P14;
+NET "rgb<1>" LOC = P12;
+NET "rgb<2>" LOC = P9;
+
+//Sync
+NET "hsync" LOC = P139;
+NET "vsync" LOC = P138;
