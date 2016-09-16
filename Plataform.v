@@ -5,17 +5,24 @@ module Plataform(
     );
 	 
 	 parameter[4:0] height = 5'd30;
-	 reg[19:0] cont;
+	 reg[19:0] cont_clk;
+	 reg[9:0] cont_y;
 	 
 	 assign plataform_end = plataform_start + height;
 	 
 	 always @ (posedge clk)
 	 begin
-		if(cont < 840000)
-			cont = cont + 1'b1;
+		if(cont_clk < 840000)
+			cont_clk = cont_clk + 1'b1;
 		else
 		begin
-			cont = 20'b0;
+			if( cont_y > 480)
+			begin
+				plataform_start = 1'b0;
+				cont_y = 1'b0;
+			end
+			cont_clk = 20'b0;
+			cont_y = cont_y + 1'b1;
 			plataform_start = plataform_start + 1'b1;
 		end
 	 end
@@ -23,7 +30,8 @@ module Plataform(
 	 initial
 	 begin
 		plataform_start = 10'd0;
-		cont = 20'd0;
+		cont_clk = 20'd0;
+		cont_y = 10'd0;
 	 end
 
 
