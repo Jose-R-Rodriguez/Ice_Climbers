@@ -1,6 +1,8 @@
 module VGA_Logic(
     input clk,
 	 input reset,
+	 input[9:0] plataform_start,
+	 input[9:0] plataform_end,
     output reg hsync,
     output reg vsync,
     output reg [2:0] rgb
@@ -8,11 +10,6 @@ module VGA_Logic(
 
 	reg[9:0] hcount;
 	reg[9:0] vcount;
-	
-	wire[9:0] plataform_start;
-	wire[9:0] plataform_end;
-	
-	Plataform get_pos( clk, plataform_start, plataform_end);
 	
 	always @ (posedge clk)
 	begin
