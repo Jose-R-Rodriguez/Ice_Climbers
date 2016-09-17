@@ -18,7 +18,7 @@ module VGA_main(
 	always @ (posedge clk50mhz)
 		vga_clk = !vga_clk;
 		
-	Plataform get_pos( vga_clk, plataform_start, plataform_end);
+	get_plataform_y get_pos( vga_clk, plataform_start, plataform_end);
 
 	VGA_Logic vga_logic (
 		.clk(vga_clk),
