@@ -3,6 +3,8 @@ module vga_logic(
 	 input reset,
 	 input[9:0] plataform_start,
 	 input[9:0] plataform_end,
+	 input[9:0] hole_start,
+	 input[9:0] hole_end,
     output reg hsync,
     output reg vsync,
     output reg [2:0] rgb
@@ -42,7 +44,12 @@ module vga_logic(
 		if(hcount < 640 && vcount < 480)
 			begin
 			if(vcount >= plataform_start && vcount < plataform_end )
-				rgb = 3'b100;
+			begin
+				if(hcount >= hole_start && hcount < hole_end )
+					rgb = 3'b011;
+				else
+					rgb = 3'b100;
+			end
 			else
 				rgb = 3'b011;
 			end
