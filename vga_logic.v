@@ -1,4 +1,4 @@
-module VGA_Logic(
+module vga_logic(
     input clk,
 	 input reset,
 	 input[9:0] plataform_start,
